@@ -1,0 +1,64 @@
+server:
+   port: 8000
+
+spring:
+  datasource: 
+    url: ${datasource.url:}
+    username: ${datasource.username:}
+    password: ${datasource.password:}
+  jpa:
+    hibernate:
+      ddl-auto: ${jpa.hibernate.ddl-auto:}
+    show-sql: ${jpa.show-sql:}
+    properties:
+      hibernate:
+        dialect: ${jpa.properties.hibernate.dialect:}
+  rabbitmq:
+    host: ${rabbitmq.host:}
+    port: ${rabbitmq.port:}
+    username: ${rabbitmq.username:}
+    password: ${rabbitmq.password:}
+  mail:
+    host: ${mail.host:}
+    port: ${mail.port:}
+    username: ${mail.username:}
+    password: ${mail.password:}
+    properties.mail.smtp.auth: ${mail.properties.mail.smtp.auth:}
+    properties.mail.smtp.starttls.enable: ${mail.properties.mail.smtp.starttls.enable:}
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      properties:
+        spring.json.trusted.packages: ${spring.json.trusted.packages:}
+        spring.json.use.type.headers: ${spring.json.use.type.headers:}
+      group-id: ${group-id:}
+      auto-offset-reset: ${auto-offset-reset:}
+      value-deserializer: ${value-deserializer:}
+      key-deserializer: ${key-deserializer:}
+    producer:
+      properties:
+        spring.json.use.type.headers: ${spring.json.use.type.headers:}
+      value-serializer: ${value-serializer:}
+      key-serializer: ${key-serializer:}
+    template:
+      default-topic: ${default-topic:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ${endpoints.web.exposure.include:}
+        exclude: ${endpoints.web.exposure.exclude:}
+  health:
+    show-details: ${health.show-details:}
+
+logging:
+  pattern:
+    file: ${pattern.file:}
+  level:
+    com.bookmygift: ${level.com.bookmygift:}
+    org.springframework.web.filter.CommonsRequestLoggingFilter: ${level.org.springframework.web.filter.CommonsRequestLoggingFilter:}
+    
+application:
+  secret:
+    key: ${secret-key:}
